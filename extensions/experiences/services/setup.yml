@@ -1,0 +1,33 @@
+---
+# Labels
+#
+controller_labels:
+  - name: windows
+    organization: "{{ organization }}"
+  - name: configure-services
+    organization: "{{ organization }}"
+
+# Projects
+#
+controller_projects:
+  - name: Windows Service Experience Project
+    organization: "{{ organization }}"
+    scm_branch: main
+    scm_clean: false
+    scm_delete_on_update: false
+    scm_type: git
+    scm_update_on_launch: false
+    scm_url: https://github.com/p3ck/infra.windows_ops.git
+
+# Job Templates
+#
+controller_templates:
+  - name: Windows / Configure Services
+    ask_inventory_on_launch: true
+    playbook: extensions/experiences/services/playbooks/run_configure_services.yml
+    project: Windows Service Experience Project
+    survey_enabled: true
+    labels:
+      - windows
+      - configure-services
+    survey_spec: "{{ lookup('file', playbook_dir + 'template_surveys/run_configure_services.yml') }}"

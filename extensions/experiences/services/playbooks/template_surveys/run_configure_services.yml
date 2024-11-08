@@ -1,0 +1,33 @@
+---
+survey_enabled: true
+survey:
+  - question_name: "Service Name"
+    question_description: "Specify the Windows Service you would like to configure"
+    required: true
+    variable: "win_service_name"
+    type: "text"
+
+  - question_name: "Service State"
+    question_description: "Specify the state of the Service"
+    required: true
+    variable: "win_service_state"
+    type: "multiplechoice"
+    choices:
+      - "absent"
+      - "paused"
+      - "started"
+      - "stopped"
+      - "restarted"
+
+  - question_name: "Start mode"
+    question_description: "Set the startup type for the Service"
+    required: false
+    variable: "win_start_mode"
+    type: "multplechoice"
+    choices:
+      - "auto"
+      - "delayed"
+      - "disabled"
+      - "manual"
+    default: "auto"
+

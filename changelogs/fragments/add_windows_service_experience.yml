@@ -1,0 +1,4 @@
+---
+minor_changes:
+  - add extensions/experience/services directory which contains the necessary playbooks for projects,
+    job_templates, surveys, labels and other relevant resources.

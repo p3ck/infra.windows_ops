@@ -1,0 +1,20 @@
+---
+- name: Manage Windows Services
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Manage Win Service
+      ansible.windows.win_service:
+        name: "{{ win_service_name }}"
+        state: "{{ win_service_state }}"
+        start_mode: "{{ win_start_mode }}"
+
+    - name: Check Win Service
+      ansible.windows.win_service_info:
+        name: "{{ win_service_name }}"
+      register: service_status
+
+    - name: Display Win Service
+      ansible.builtin.debug:
+        var: service_status
+...
